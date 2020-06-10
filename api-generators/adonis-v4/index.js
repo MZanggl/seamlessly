@@ -46,9 +46,8 @@ module.exports = function generatedRoutes(options) {
     }
   });
 
-  if (Env.get("NODE_ENV") !== "production") {
+  if (Env.get("NODE_ENV") !== "production" && !Helpers.isAceCommand()) {
     const file = require(rcPath);
-
     file.generatedRoutes = generatedRoutes;
     fs.promises.writeFile(rcPath, JSON.stringify(file, null, 4));
   }

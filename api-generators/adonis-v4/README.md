@@ -19,6 +19,14 @@ require('seamlessly/api-generators/adonis-v4')({
 
 ---
 
+**If the rc file is within the adonis application, make sure to ignore it when starting the dev project:**
+
+```bash
+adonis serve --dev -i ./.seamlessrc.json
+```
+
+---
+
 Access `auth` using `this.auth`.
 
 ```javascript
