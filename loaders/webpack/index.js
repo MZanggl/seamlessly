@@ -1,4 +1,5 @@
 const { getOptions } = require('loader-utils');
+const path = require('path')
 
 module.exports = function seamlesslyLoader(source) {
   const { rcPath = path.cwd() } = getOptions(this);
