@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "Michael Zanggl",
   "license": "MIT",
-  "devDependencies": {
+  "dependencies": {
     "loader-utils": "^2.0.0"
   }
 }
