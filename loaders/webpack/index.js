@@ -10,7 +10,7 @@ module.exports = function seamlesslyLoader(source) {
       return fetch('${seamlesslyRc.backendUrl}/${route.endpoint}', {
         method: "POST",
         body: JSON.stringify({ args }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json', credentials: 'include' }
       }).then(res => res.json()).then(res => res.result)
     }`
   }).join('\n')
