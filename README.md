@@ -15,3 +15,7 @@ cp node_modules/seamlessly/.seamlesslyrc.json ./
 2. Choose a loader from the "loaders" folder and follow the respective README for the frontend integration.
 
 3. Choose a backend integration from the "api-generators" folder and follow teh respective README.
+
+## Examples
+
+- [Adonis.js v4 + Vue.js](https://github.com/MZanggl/adonis-vue-without-api)
