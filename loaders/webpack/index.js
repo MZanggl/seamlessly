@@ -8,7 +8,7 @@ module.exports = function seamlesslyLoader(source) {
   return seamlesslyRc.generatedRoutes.map(route => {
     return `exports.${route.endpoint} = function fetchFromBackend(...args) {
       return fetch('${seamlesslyRc.backendUrl}/${route.endpoint}', {
-        method: "POST",
+        method: "${route.method}",
         body: JSON.stringify({ args }),
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' }
