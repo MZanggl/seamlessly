@@ -7,6 +7,7 @@ const Helpers = use("Helpers")
 module.exports = function generatedRoutes(options) {
   let { rcPath = "", actionsPath = path.join("app", "Actions") } = options
   rcPath = path.join(Helpers.appRoot(), rcPath, '.seamlesslyrc.json')
+  const { apiPrefix } = fs.readFileSync(rcPath, 'utf-8')
   actionsPath = path.join(Helpers.appRoot(), actionsPath)
 
   const generatedRoutes = [];
@@ -31,7 +32,7 @@ module.exports = function generatedRoutes(options) {
         method: "POST",
       });
 
-      Route.post(`/api/${endpoint}`, async ({ request, response, auth }) => {
+      Route.post(`/${apiPrefix}/${endpoint}`, async ({ request, response, auth }) => {
         try {
           const result = await module[endpoint].apply(
             { auth },

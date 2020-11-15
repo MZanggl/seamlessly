@@ -10,7 +10,7 @@ const path = require('path')
   module: {
     rules: [
       {
-        test: /Actions/, // check for imports from an Actions folder
+        test: /SeamlessActions/, // check for imports from a |SeamlessActions" folder
         use: {
           loader: 'seamlessly/loaders/webpack',
           options: {

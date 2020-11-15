@@ -2,7 +2,7 @@
 
 > `npm install seamlessly`
 
-Seamlessly integrate frontend and backend making importing backend code in frontend possible and secure.
+Seamlessly integrate frontend and backend, making importing backend code in frontend possible and secure.
 
 ## Get Started
 

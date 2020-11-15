@@ -1,4 +1,5 @@
 {
-  "backendUrl": "/api",
+  "apiHost": "",
+  "apiPrefix": "api",
   "generatedRoutes": []
 }
