@@ -7,7 +7,7 @@ const Helpers = use("Helpers")
 module.exports = function generatedRoutes(options) {
   let { rcPath = "", actionsPath = path.join("app", "Actions") } = options
   rcPath = path.join(Helpers.appRoot(), rcPath, '.seamlesslyrc.json')
-  const { apiPrefix } = fs.readFileSync(rcPath, 'utf-8')
+  const rc = require(rcPath);
   actionsPath = path.join(Helpers.appRoot(), actionsPath)
 
   const generatedRoutes = [];
@@ -32,7 +32,7 @@ module.exports = function generatedRoutes(options) {
         method: "POST",
       });
 
-      Route.post(`/${apiPrefix}/${endpoint}`, async ({ request, response, auth }) => {
+      Route.post(`/${rc.apiPrefix}/${endpoint}`, async ({ request, response, auth }) => {
         try {
           const result = await module[endpoint].apply(
             { auth },
@@ -48,8 +48,7 @@ module.exports = function generatedRoutes(options) {
   });
 
   if (Env.get("NODE_ENV") !== "production" && !Helpers.isAceCommand()) {
-    const file = require(rcPath);
-    file.generatedRoutes = generatedRoutes;
-    fs.promises.writeFile(rcPath, JSON.stringify(file, null, 4));
+    rc.generatedRoutes = generatedRoutes;
+    fs.promises.writeFile(rcPath, JSON.stringify(rc, null, 4));
   }
 };
