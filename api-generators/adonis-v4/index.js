@@ -3,6 +3,7 @@ const path = require("path");
 const Env = use("Env");
 const Route = use("Route");
 const Helpers = use("Helpers")
+const { given } = require("flooent")
 
 module.exports = function generatedRoutes(options) {
   let { rcPath = "", actionsPath = path.join("app", "Actions") } = options
@@ -19,22 +20,25 @@ module.exports = function generatedRoutes(options) {
       throw new Error(`${file} does not export individual functions.`);
     }
 
-    for (let endpoint of Object.keys(module)) {
-      if (typeof module[endpoint] !== "function") {
-        console.log(`[${file}] skipping non-function [${endpoint}].`);
+    for (const id of Object.keys(module)) {
+      if (typeof module[id] !== "function") {
+        console.log(`[${file}] skipping non-function [${id}].`);
         continue;
       }
+
+      const filename = given.string(file).beforeLast('.').valueOf()
+      const endpoint = `${filename}/${id}`
 
       generatedRoutes.push({
         file,
         endpoint,
-        id: endpoint,
+        id,
         method: "POST",
       });
 
       Route.post(`/${rc.apiPrefix}/${endpoint}`, async ({ request, response, auth }) => {
         try {
-          const result = await module[endpoint].apply(
+          const result = await module[id].apply(
             { auth },
             request.input("args")
           );

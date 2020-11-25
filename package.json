@@ -10,6 +10,7 @@
   "author": "Michael Zanggl",
   "license": "MIT",
   "dependencies": {
+    "flooent": "^2.1.0",
     "loader-utils": "^2.0.0"
   }
 }

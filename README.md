@@ -19,3 +19,30 @@ cp node_modules/seamlessly/.seamlesslyrc.json ./
 ## Examples
 
 - [Adonis.js v4 + Vue.js](https://github.com/MZanggl/adonis-vue-without-api)
+
+## Creating a plugin
+
+### How to create an API generator
+
+1. Construct an API the user can inject into his routes file with an option to pass in the `rcPath` (path of seamlesslyrc.json) as well as actionsPath (path where the actions live).
+
+2. Loop through all files in the actions folder and create a POST route for each, then write the generated routes to `.seamlesslyrc.json`
+
+```json
+{
+  "method": "POST", // currently always POST, subject to change
+  "endpoint": "<file name without path and extension + function name>",
+  "file": "<file name without path, but with extension>",
+  "id": "<function name>" // will be used as client function name
+}
+```
+
+3. The request for each route will receive an array named `args` in its payload. Call the actual function using the spread array.
+
+4. Each route must return the following JSON format:
+
+```json
+{
+  "result": "<actual result of function>"
+}
+```
