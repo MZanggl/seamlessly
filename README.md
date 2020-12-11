@@ -14,7 +14,7 @@ cp node_modules/seamlessly/.seamlesslyrc.json ./
 
 2. Choose a loader from the "loaders" folder and follow the respective README for the frontend integration.
 
-3. Choose a backend integration from the "api-generators" folder and follow teh respective README.
+3. Choose a backend integration from the "api-generators" folder and follow the respective README.
 
 ## Examples
 
@@ -24,11 +24,11 @@ cp node_modules/seamlessly/.seamlesslyrc.json ./
 
 ### How to create an API generator
 
-1. Construct an API the user can inject into his routes file with an option to pass in the `rcPath` (path of seamlesslyrc.json) as well as actionsPath (path where the actions live).
+1. Construct an API the user can inject into his routes file to create the routes, allow an option to pass in the `rcPath` (path of seamlesslyrc.json) as well as the actionsPath (path where the actions live).
 
 2. Loop through all files in the actions folder and create a POST route for each, then write the generated routes to `.seamlesslyrc.json`
 
-```json
+```jsonc
 {
   "method": "POST", // currently always POST, subject to change
   "endpoint": "<file name without path and extension + function name>",
