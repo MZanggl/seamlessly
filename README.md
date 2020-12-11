@@ -1,8 +1,17 @@
 # seamlessly
 
-> `npm install seamlessly`
+Seamlessly integrate frontend and backend, making importing backend code on the frontend possible, convenient and secure.
 
-Seamlessly integrate frontend and backend, making importing backend code in frontend possible and secure.
+```javascript
+import { getCurrentUser } from '../api/Actions/users.js'
+
+getCurrentUser().then(user => {
+  document.getElementById('app').innerHTML = JSON.stringify(user)
+})
+```
+
+
+> `npm install seamlessly`
 
 ## Get Started
 
